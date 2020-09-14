@@ -1,19 +1,22 @@
 #!/usr/local/bin/python3
 
-import json
 import requests
+import json
 
 url = 'https://api.chucknorris.io/jokes/random'
-
 def get_chuck_joke(api):
-    """
-    Get a random joke from the Chuck Norris API and return the serial JSON
-    :param api:
-    :return:serial JSON
-    """
-    response = #  TASK 1 - use requests to get a joke.
-    return #  TASK 2 - return the response in JSON format
+    getRest = requests.request("GET", api)
+    jsonResp = getRest.json()
+    return jsonResp
 
 if __name__ == '__main__':
-    joke = json.something(get_chuck_joke(url)) #  TASK 3 - correct the json statement
-    print() #  TASK 4 - print just a joke without any superfluous symbols
+    #  TASK 3 - correct the json statement
+    #  This will get the json serial and convert it into string
+    joke = json.dumps(get_chuck_joke(url))
+    print("\n---TASK4---")
+    #   Get the string from above and convert it to a Python dictionary and print the value
+    joke = json.loads(joke)['value']
+    print(joke)
+    #   I could have printed directly by simply doing this:
+    #   print(get_chuck_joke(url)['value'])
+    #   But, task 3 requested to copmplete the json statement.
